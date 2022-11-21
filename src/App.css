@@ -1,8 +1,11 @@
-body{
-  background-image: linear-gradient(rgb(135, 42, 223),rgba(128, 128, 238, 0.856));
+body {
+  background-image: linear-gradient(
+    rgb(135, 42, 223),
+    rgba(128, 128, 238, 0.856)
+  );
   background-attachment: fixed;
   background-repeat: no-repeat;
-  font-family: 'poppins';
+  font-family: "poppins";
 }
 
 .App {
@@ -20,7 +23,7 @@ body{
   }
 }
 
-.hCenter{
+.hCenter {
   margin: auto;
 }
 
