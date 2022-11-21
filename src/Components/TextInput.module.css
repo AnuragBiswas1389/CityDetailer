@@ -1,0 +1,18 @@
+.container{
+    width: 650px;
+    height: 40px;
+    padding: 10px;
+    margin: auto;
+
+}
+.input{
+    width: 95%;
+    height: 100%;
+    padding: 1px;
+    text-align: center;
+    border-radius: 20px;
+    border-style: solid;
+    color: rgb(66, 65, 66);
+    font-size: medium;
+    
+}

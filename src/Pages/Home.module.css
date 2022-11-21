@@ -1,0 +1,74 @@
+.hCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px;
+}
+.heading {
+  color: whitesmoke;
+  font-size: x-large;
+  font-weight: bolder;
+  margin: 25px;
+  padding: 10px;
+}
+.infoContainer {
+  background-color: rgba(78, 78, 78, 0.596);
+  padding: 15px;
+  border-radius: 30px;
+  /* ----div centering procedure--- */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50em;
+  height: 20em;
+  margin-top: -10em; /*set to a negative number 1/2 of your height*/
+  margin-left: -25em; /*set to a negative number 1/2 of your width*/
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  border-radius: inherit;
+}
+.button {
+  margin: 17px;
+  margin-left: 0;
+}
+
+.button {
+  background-color: rgba(176, 115, 233, 0.897);
+  height: 35px;
+  width: 95px;
+  border-radius: 15px;
+  border-style: none;
+  cursor: pointer;
+  color: whitesmoke;
+}
+.button:hover {
+  background-color: rgba(157, 92, 221, 0.925);
+}
+.button:active {
+  background-color: rgba(120, 63, 177, 0.842);
+}
+.dropDown{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: auto;
+  font-weight: 400;
+  margin-left: 46px;
+  margin-top: -9.5px;
+}
+.dropElement{
+  width: 10rem;
+  cursor: pointer;
+  margin: 1px;
+}
+.dropElement:hover{
+  background-color: rgb(185, 217, 245);
+  padding: 2px;
+  user-select: none;
+}
