@@ -52,11 +52,11 @@ function App(props) {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/Home"
             element={<Home data={data} onCityChange={setCurrCity}></Home>}
           ></Route>
           <Route
-            path="/info"
+            path="/"
             element={
               <Info
                 city={city}

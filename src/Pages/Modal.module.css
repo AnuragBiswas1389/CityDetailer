@@ -1,0 +1,59 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.61);
+  color: white;
+  height: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+}
+.container {
+  background-color: rgba(159, 90, 223, 0.979);
+  width: 60%;
+  margin: auto;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 9px;
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    width:20em;
+    height:8em;
+    margin-top: -4em;
+    margin-left: -10em;
+
+
+}
+.content {
+  border-radius: inherit;
+  height: 350px;
+}
+.heading {
+  padding: 1px;
+  text-align: center;
+  border-radius: 9px;
+}
+.body {
+  text-align: center;
+  font-size: larger;
+  margin-top: 30px;
+}
+.btnCancel{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 9px;
+  border-bottom-left-radius: 5px;
+  border-style: none;
+  background-color: rgb(220, 211, 228);
+  cursor: pointer;
+}
+.btnCancel:hover {
+  background-color: rgba(200, 148, 248, 0.932);
+}
+.btnCancel:active {
+  background-color: rgb(208, 173, 241);
+}

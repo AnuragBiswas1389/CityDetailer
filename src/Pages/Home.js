@@ -1,11 +1,12 @@
 import style from "./Home.module.css";
 import TextInput from "../Components/TextInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home(props) {
   const [input, setInput] = useState("");
   const [suggestion, setSuggestions] = useState(false);
+  const [data, setData] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,21 +24,14 @@ function Home(props) {
 
   function handelSearch(e) {
     var city = null;
-    var temp, weather, population;
+    var temp, weather, population, name;
+
     if (input !== "") {
-      props.data.forEach(function (ele) {
-        if (ele.name.toLowerCase() === input.toLowerCase()) {
-          city = ele.name;
-          temp = ele.temp;
-          weather = ele.weather;
-          population = ele.population;
+      fetchData(input);
+      console.log(temp + weather + population);
+      props.onCityChange(name, weather, temp, population);
 
-          console.log( temp +weather +population)
-          props.onCityChange(ele.name, weather, temp,population);
-
-          navigate("/info");
-        }
-      });
+      navigate("/info");
       if (city === null) {
         alert("please enter valid city name");
       }
@@ -45,8 +39,24 @@ function Home(props) {
       alert("please enter city name");
     }
   }
-  function setSearchItem(data) {
-    setInput(data);
+
+  const api =
+    "https://api.openweathermap.org/data/2.5/weather?q=agartala&appid=61e1f3fdc07ad32d4b6256c2b1600346";
+
+  function fetchData(city) {
+    var cityName;
+    if (city !== "") {
+      alert("Please enter a city name");
+      return;
+    }
+    var api = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=61e1f3fdc07ad32d4b6256c2b1600346`;
+    fetch(api)
+      .then((response) => {
+        return response.json();
+      })
+      .then((actualData) => {
+        console.log(actualData.weather[0].main);
+      });
   }
 
   return (

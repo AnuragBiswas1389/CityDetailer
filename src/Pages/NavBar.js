@@ -6,10 +6,10 @@ function NavBar(props) {
     <div className={style.container}>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/Home">Home</Link>
         </li>
         <li>
-          <Link to="/info">Info</Link>
+          <Link to="/">Info</Link>
         </li>
         <li>
           <Link to="/population">Population</Link>
