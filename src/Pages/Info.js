@@ -14,6 +14,7 @@ function Info(props) {
   const [input, setInput] = useState("");
   const [icon, setIcon] = useState("");
   const [display, setDisplay] = useState(true);
+  let stats=true;
 
   let view;
 
@@ -47,10 +48,12 @@ function Info(props) {
 
   function handelSearch() {
     setDisplay(true);
-    console.log("loaded from memory!");
-    let loc = input.charAt(0).toUpperCase() + input.slice(1);;
-    console.log(loc)
+    let loc = input.charAt(0).toUpperCase() + input.slice(1);
+    setName(loc);
+    console.log(loc);
+
     if (localStorage.getItem(loc)) {
+      console.log("loaded from memory!");
       let rdata = JSON.parse(localStorage.getItem(loc));
       console.log(rdata);
       setTemp(rdata.temp);
@@ -66,12 +69,26 @@ function Info(props) {
     }
     if (localStorage.getItem(input) === null) {
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=61e1f3fdc07ad32d4b6256c2b1600346`
+        `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=61e1f3fdc07ad32d4b6256c2b1600346`
       )
-        .then((response) => response.json())
+        .then((response) => {
+          response.json();
+          console.log();
+          if (response.statusText === "Not Found") {
+            alert("City not found");
+            setDisplay(false);
+            stats=false;
+            return 0;
+          }
+        })
         .then((rdata) => {
           setDisplay(false);
-          console.log(
+          if(stats===false){
+            console.log(stats);
+            setName("");
+            stats=true;
+            return;
+          }console.log(
             rdata.main.temp + " " + rdata.name + " " + rdata.weather[0].main
           );
           setTemp(rdata.main.temp);
@@ -82,7 +99,7 @@ function Info(props) {
             temp: `${rdata.main.temp}`,
             weather: `${rdata.weather[0].main}`,
             icon: `${rdata.weather[0].icon}`,
-            name:`${rdata.name}`
+            name: `${rdata.name}`,
           };
 
           localStorage.setItem(rdata.name, JSON.stringify(data));
