@@ -14,7 +14,6 @@ function Info(props) {
   const [input, setInput] = useState("");
   const [icon, setIcon] = useState("");
   const [display, setDisplay] = useState(true);
-  let stats=true;
 
   let view;
 
@@ -67,30 +66,24 @@ function Info(props) {
       alert("Enter a city name");
       return;
     }
-    if (localStorage.getItem(input) === null) {
+    if (localStorage.getItem(loc) === null) {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=61e1f3fdc07ad32d4b6256c2b1600346`
       )
         .then((response) => {
-          response.json();
-          console.log();
-          if (response.statusText === "Not Found") {
-            alert("City not found");
-            setDisplay(false);
-            stats=false;
-            return 0;
-          }
+          if (response.statusText === "Not Found"){
+            alert("city not found!")
+            setName("")
+          } 
+          return response.json();
+
         })
         .then((rdata) => {
           setDisplay(false);
-          if(stats===false){
-            console.log(stats);
-            setName("");
-            stats=true;
-            return;
-          }console.log(
+          console.log(
             rdata.main.temp + " " + rdata.name + " " + rdata.weather[0].main
           );
+
           setTemp(rdata.main.temp);
           setName(rdata.name);
           setWeather(rdata.weather[0].main);
