@@ -1,36 +1,15 @@
 import "./App.css";
-import Home from "./Pages/Home";
 import Info from "./Pages/Info";
-import Temperature from "./Pages/Temperature";
-import Population from "./Pages/Population";
-import Weather from "./Pages/Weather";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, createContext } from "react";
+import { appContext } from "./Pages/AppContext";
 
-const data = [
+const appData = [
   {
     name: "Agartala",
     temp: "30",
     weather: "cloudy",
-    population: "95lakh",
-  },
-  {
-    name: "Udaipur",
-    temp: "33",
-    weather: "sunny",
-    population: "90lakh",
-  },
-  {
-    name: "Dharmanagar",
-    temp: "26",
-    weather: "Raining",
-    population: "66lakh",
-  },
-  {
-    name: "Shilchor",
-    temp: "20",
-    weather: "Fog",
-    population: "60lakh",
+    icon: "",
   },
 ];
 
@@ -38,17 +17,13 @@ function App(props) {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
   const [temp, setTem] = useState("");
-  const [population, setPopulation] = useState("");
+  const [icon, setIcon] = useState("");
+  const [data, setData] = useState(appData);
 
-  function setCurrCity(city, weather, temp, population) {
-    setCity(city);
-    setWeather(weather);
-    setTem(temp);
-    setPopulation(population);
-  }
 
   return (
     <>
+<<<<<<< Updated upstream
       <Router>
         <Routes>
           <Route
@@ -80,6 +55,11 @@ function App(props) {
           ></Route>
         </Routes>
       </Router>
+=======
+      <appContext.Provider value={{setData,data}}>
+        <Info city={city} temperature={temp} weather={weather} icon={icon} data={data}/>
+      </appContext.Provider>
+>>>>>>> Stashed changes
     </>
   );
 }
